@@ -1,4 +1,4 @@
-<font size = "24"><center>Kirito Sword</center></font>
+<p align = "center"><font size = "24">Kirito Sword</font></p>
 
 <div align = "center"><img src = "readme/0-cover.jpg"/></div>
 
