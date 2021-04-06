@@ -19,11 +19,16 @@ local attack_speed_new = 0.48
 local attack_power = 60
 -- 攻击距离
 local attack_distance = 1.2
--- 耐久
-local item_durability = 600
+-- 最大耐久
+local max_uses = 600
 
 -- 移动速度
 local move_speed = 0.95
+
+-- 每次可修复的耐久
+local fixed_uses = max_uses * 0.2
+-- 修补材料
+local fixed_material = "charcoal"
 
 -- 装备函数
 local function onequip(inst, owner)
@@ -50,6 +55,22 @@ end
 -- 耐久用完函数
 local function onfinished(inst)
     inst:Remove()
+end
+
+-- 指定修复材料
+local function acceptitem(inst, item)
+    return (inst.components.finiteuses:GetUses() < max_uses) and (item.prefab == fixed_material)
+end
+
+-- 修复耐久函数
+local function onaccept(inst, giver, item, player)
+    if inst.components.finiteuses then
+        inst.components.finiteuses:SetUses(inst.components.finiteuses:GetUses() + fixed_uses)
+        if inst.components.finiteuses:GetUses() > max_uses then
+            inst.components.finiteuses:SetUses(max_uses)
+        end
+    end
+    giver.components.talker:Say("当前耐久: "..inst.components.finiteuses:GetUses())
 end
 
 -- 物品创建函数
@@ -109,9 +130,14 @@ local function fn(Sim)
 
     -- 设置有限耐久 (设置可使用次数)
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(item_durability)
-    inst.components.finiteuses:SetUses(item_durability)
+    inst.components.finiteuses:SetMaxUses(max_uses)
+    inst.components.finiteuses:SetUses(max_uses)
     inst.components.finiteuses:SetOnFinished(onfinished)
+
+    -- 可修补
+    inst:AddComponent("trader")
+    inst.components.trader:SetAcceptTest(acceptitem)
+    inst.components.trader.onaccept = onaccept
 
     MakeHauntableLaunch(inst)
 

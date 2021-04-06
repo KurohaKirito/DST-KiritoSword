@@ -61,7 +61,8 @@ AddMinimapAtlas("images/map_icons/nightskysword.xml")
 AddMinimapAtlas("images/map_icons/bluerosesword.xml")
 
 -- 合成公式: 漆黑巨剑
-local blackplate = GLOBAL.Recipe("blackplate",
+local blackplate = GLOBAL.Recipe(
+    "blackplate",
     {
         Ingredient("charcoal", 5),
         Ingredient("log", 2),
@@ -71,7 +72,8 @@ local blackplate = GLOBAL.Recipe("blackplate",
 blackplate.atlas = "images/inventoryimages/blackplate.xml"
 
 -- 合成公式: 阐释者
-local elucidatorsword = GLOBAL.Recipe("elucidatorsword",
+local elucidatorsword = GLOBAL.Recipe(
+    "elucidatorsword",
     {
         Ingredient("elucidatorgem", 2, "images/inventoryimages/elucidatorgem.xml"),
         Ingredient("nightmarefuel", 8),
@@ -80,7 +82,8 @@ local elucidatorsword = GLOBAL.Recipe("elucidatorsword",
 elucidatorsword.atlas = "images/inventoryimages/elucidatorsword.xml"
 
 -- 合成公式: 逐暗者
-local darkrepulsersword = GLOBAL.Recipe("darkrepulsersword",
+local darkrepulsersword = GLOBAL.Recipe(
+    "darkrepulsersword",
     {
         Ingredient("crystallite", 1, "images/inventoryimages/crystallite.xml"),
         Ingredient("hammer", 1),
@@ -90,7 +93,8 @@ local darkrepulsersword = GLOBAL.Recipe("darkrepulsersword",
 darkrepulsersword.atlas = "images/inventoryimages/darkrepulsersword.xml"
 
 -- 合成公式: 夜空之剑
-local nightskysword = GLOBAL.Recipe("nightskysword",
+local nightskysword = GLOBAL.Recipe(
+    "nightskysword",
     {
         Ingredient("gigascedar", 1, "images/inventoryimages/gigascedar.xml"),
         Ingredient("marble", 4),
@@ -100,7 +104,8 @@ local nightskysword = GLOBAL.Recipe("nightskysword",
 nightskysword.atlas = "images/inventoryimages/nightskysword.xml"
 
 -- 合成公式: 恶魔之树的顶枝
-local gigascedar = GLOBAL.Recipe("gigascedar",
+local gigascedar = GLOBAL.Recipe(
+    "gigascedar",
     {
         Ingredient("livinglog", 10),
     },
@@ -108,7 +113,8 @@ local gigascedar = GLOBAL.Recipe("gigascedar",
 gigascedar.atlas = "images/inventoryimages/gigascedar.xml"
 
 -- 合成公式: 蓝蔷薇之剑
-local bluerosesword = GLOBAL.Recipe("bluerosesword",
+local bluerosesword = GLOBAL.Recipe(
+    "bluerosesword",
     {
         Ingredient("ice", 25),
         Ingredient("blueamulet", 1),
@@ -126,6 +132,9 @@ local function AddBossLootKlaus(prefab)
     end
 end
 
+-- 克劳斯掉落
+AddPrefabPostInit("klaus", AddBossLootKlaus)
+
 -- 蚁狮 BOSS 掉落: 黑宝石, 水晶石英铸块
 local function AddBossLootAntlion(prefab)
     if prefab.components.lootdropper then
@@ -134,5 +143,27 @@ local function AddBossLootAntlion(prefab)
     end
 end
 
-AddPrefabPostInit("klaus", AddBossLootKlaus)
+-- 增加蚁狮掉落
 AddPrefabPostInit("antlion", AddBossLootAntlion)
+
+-- 增加 "可作为武器修复材料" 组件
+local function MaterialsToFixedWeapon(inst)
+    if not inst.components.tradable then
+        inst:AddComponent("tradable")
+    end
+end
+
+-- 设置 "木炭" 可作为武器修补材料 (漆黑巨剑)
+AddPrefabPostInit("charcoal", MaterialsToFixedWeapon)
+
+-- 设置 "冰" 可作为武器修补材料 (蓝蔷薇之剑)
+AddPrefabPostInit("ice", MaterialsToFixedWeapon)
+
+-- 设置 "荧光果" 可作为武器修补材料 (逐暗者)
+AddPrefabPostInit("lightbulb", MaterialsToFixedWeapon)
+
+-- 设置 "活木" 可作为武器修补材料 (夜空之剑)
+AddPrefabPostInit("livinglog", MaterialsToFixedWeapon)
+
+-- 设置 "噩梦燃料" 可作为武器修补材料 (阐释者)
+AddPrefabPostInit("nightmarefuel", MaterialsToFixedWeapon)

@@ -19,8 +19,8 @@ local attack_speed_new = 0.36
 local attack_power = 110
 -- 攻击距离
 local attack_distance = 1.2
--- 耐久
-local item_durability = 1600
+-- 最大耐久
+local max_uses = 1600
 
 -- 星爆气流斩额外伤害
 local starBurstStream_damage = 360
@@ -32,6 +32,11 @@ local crit_damage = attack_power * 1
 
 -- 移动速度
 local move_speed = 1.25
+
+-- 每次可修复的耐久
+local fixed_uses = max_uses * 0.1
+-- 修补材料
+local fixed_material = "lightbulb"
 
 -- 装备函数
 local function onequip(inst, owner)
@@ -87,6 +92,22 @@ local function onfinished(inst)
     inst:Remove()
 end
 
+-- 指定修复材料
+local function acceptitem(inst, item)
+    return (inst.components.finiteuses:GetUses() < max_uses) and (item.prefab == fixed_material)
+end
+
+-- 修复耐久函数
+local function onaccept(inst, giver, item, player)
+    if inst.components.finiteuses then
+        inst.components.finiteuses:SetUses(inst.components.finiteuses:GetUses() + fixed_uses)
+        if inst.components.finiteuses:GetUses() > max_uses then
+            inst.components.finiteuses:SetUses(max_uses)
+        end
+    end
+    giver.components.talker:Say("当前耐久: "..inst.components.finiteuses:GetUses())
+end
+
 -- 物品创建函数
 local function fn(Sim)
     local inst = CreateEntity()
@@ -119,8 +140,8 @@ local function fn(Sim)
     inst.components.weapon:SetRange(attack_distance, attack_distance)
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(item_durability)
-    inst.components.finiteuses:SetUses(item_durability)
+    inst.components.finiteuses:SetMaxUses(max_uses)
+    inst.components.finiteuses:SetUses(max_uses)
     inst.components.finiteuses:SetOnFinished(onfinished)
 
     inst:AddComponent("inspectable")
@@ -133,6 +154,10 @@ local function fn(Sim)
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
     inst.components.equippable.walkspeedmult = move_speed
+
+    inst:AddComponent("trader")
+    inst.components.trader:SetAcceptTest(acceptitem)
+    inst.components.trader.onaccept = onaccept
 
     MakeHauntableLaunch(inst)
 
