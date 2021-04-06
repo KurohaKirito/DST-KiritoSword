@@ -1,3 +1,7 @@
+<font size = "24"><center>Kirito Sword</center></font>
+
+<div align = "center"><img src = "readme/0-cover.jpg"/></div>
+
 该 MOD 为饥荒联机版中的服务器 MOD.
 
 原 MOD 地址为: [Kirito Sword](https://steamcommunity.com/sharedfiles/filedetails/?id=1157690027)
@@ -30,6 +34,8 @@
 
 (请原谅我的渣翻, 我实在不知道咋翻译 blackplate 好听😂)
 
+![漆黑巨剑](readme/1-blackplate.png)
+
 - 基础攻击力: 60
 
 - 攻击速度: 减少 20%
@@ -45,6 +51,8 @@
 # 蓝蔷薇之剑
 
 蓝蔷薇之剑是尤吉欧的爱剑, 制作夜空之剑的恶魔之树就是这把剑砍倒的.
+
+![蓝蔷薇之剑](readme/4-bluerosesword.png)
 
 - 基础攻击力: 100
 
@@ -65,6 +73,8 @@
 # 逐暗者
 
 逐暗者是莉兹贝特倾注其爱意为 Kirito 所锻造的剑.
+
+![逐暗者](readme/2-darkrepulsersword.png)
 
 - 基础攻击力: 110
 
@@ -94,6 +104,8 @@
 
 阐释者是艾因格朗特 50 层 BOSS 的专属掉落物. 因为 25, 50, 75 的 BOSS 异常强大, 因此其掉落物也是十分强悍.
 
+![阐释者](readme/3-elucidatorsword.png)
+
 - 基础攻击力: 120
 
 - 攻击速度: 增加 25%
@@ -119,6 +131,8 @@
 # 夜空之剑
 
 Kirito 在 Under World 中的爱剑, 由恶魔之树的顶枝制作而成.
+
+![夜空之剑](readme/5-nightskysword.png)
 
 - 基础攻击力: 110
 
