@@ -11,9 +11,9 @@ STRINGS.NAMES.BLACKPLATE = "漆黑巨剑"
 STRINGS.RECIPE_DESC.BLACKPLATE = "Kirito 在 ALO 中的初期用剑"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKPLATE = "一把漆黑的巨剑, 光看起来就很沉"
 
--- 原本攻击速度
+-- 原本攻击间隔
 local attack_speed_old = 0.4
--- 新攻击速度
+-- 新攻击间隔
 local attack_speed_new = 0.48
 -- 攻击力
 local attack_power = 60

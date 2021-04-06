@@ -24,6 +24,7 @@ local item_durability = 1600
 
 -- 星爆气流斩额外伤害
 local starBurstStream_damage = 360
+
 -- 暴击率
 local critRate = 0.35
 -- 暴击额外伤害

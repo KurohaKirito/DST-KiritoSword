@@ -28,6 +28,8 @@ local critRate = 0.35
 local skill_range = 5
 -- 冰冻技能效果强度
 local skill_freeze_effect = 0.5
+-- 冰冻技能伤害
+local skill_freeze_damage = 100
 -- 普攻冰冻效果强度
 local attack_freeze_effect = 0.2
 
@@ -87,7 +89,7 @@ local function onattack(inst, owner, target)
                     icspikes.Transform:SetPosition(monster_temp:GetPosition():Get())
 
                     if monster_temp ~= target then
-                        monster_temp.components.health:DoDelta(-10)
+                        monster_temp.components.health:DoDelta(-skill_freeze_damage)
                     end
 
                     if monster_temp.components.freezable ~= nil then

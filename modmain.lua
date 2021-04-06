@@ -63,9 +63,9 @@ AddMinimapAtlas("images/map_icons/bluerosesword.xml")
 -- 合成公式: 漆黑巨剑
 local blackplate = GLOBAL.Recipe("blackplate",
     {
-        Ingredient("charcoal", 3),
+        Ingredient("charcoal", 5),
         Ingredient("log", 2),
-        Ingredient("flint", 3),
+        Ingredient("flint", 5),
     },
     GLOBAL.RECIPETABS.WAR, GLOBAL.TECH.SCIENCE_TWO)
 blackplate.atlas = "images/inventoryimages/blackplate.xml"
@@ -126,7 +126,7 @@ local function AddBossLootKlaus(prefab)
     end
 end
 
--- 蚁狮 BOSS 掉落: 黑宝石, 阐释者, 水晶石英铸块
+-- 蚁狮 BOSS 掉落: 黑宝石, 水晶石英铸块
 local function AddBossLootAntlion(prefab)
     if prefab.components.lootdropper then
         prefab.components.lootdropper:AddChanceLoot('elucidatorgem', 1)

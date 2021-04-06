@@ -25,7 +25,7 @@ local item_durability = 2000
 -- 技能额外伤害
 local skill_damage = 360 - attack_power
 -- 技能冷却时间
-local skill_cool_time = 6
+local skill_cool_time = 5
 
 -- 移动速度
 local move_speed = 1.2
