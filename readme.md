@@ -1,6 +1,6 @@
-<p align = "center"><font size = "24">Kirito Sword</font></p>
+# Kirito Sword
 
-<div align = "center"><img src = "readme/0-cover.jpg"/></div>
+![封面](readme/0-cover.jpg)
 
 该 MOD 为饥荒联机版中的服务器 MOD.
 
