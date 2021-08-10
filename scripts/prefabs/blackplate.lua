@@ -16,7 +16,7 @@ local attack_speed_old = 0.4
 -- 新攻击间隔
 local attack_speed_new = 0.48
 -- 攻击力
-local attack_power = 60
+local attack_power = 45
 -- 攻击距离
 local attack_distance = 1.2
 -- 最大耐久

@@ -1,7 +1,7 @@
 ---@diagnostic disable: lowercase-global
 
 name = "Kirito Sword"
-version = "1.55ab"
+version = "2.0"
 author = "Kuroha"
 description = [[刀剑神域中桐谷和人的爱剑]]
 forumthread = ""

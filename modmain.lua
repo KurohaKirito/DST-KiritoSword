@@ -159,11 +159,11 @@ AddPrefabPostInit("charcoal", MaterialsToFixedWeapon)
 -- 设置 "冰" 可作为武器修补材料 (蓝蔷薇之剑)
 AddPrefabPostInit("ice", MaterialsToFixedWeapon)
 
--- 设置 "荧光果" 可作为武器修补材料 (逐暗者)
-AddPrefabPostInit("lightbulb", MaterialsToFixedWeapon)
-
 -- 设置 "活木" 可作为武器修补材料 (夜空之剑)
 AddPrefabPostInit("livinglog", MaterialsToFixedWeapon)
+
+-- 设置 "荧光果" 可作为武器修补材料 (逐暗者)
+AddPrefabPostInit("lightbulb", MaterialsToFixedWeapon)
 
 -- 设置 "噩梦燃料" 可作为武器修补材料 (阐释者)
 AddPrefabPostInit("nightmarefuel", MaterialsToFixedWeapon)
