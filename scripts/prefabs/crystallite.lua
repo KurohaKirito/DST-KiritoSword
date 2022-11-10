@@ -7,7 +7,7 @@ local Assets =
 }
 
 STRINGS.NAMES.CRYSTALLITE = "水晶石英铸块"
-STRINGS.RECIPE_DESC.DARKREPULSERSWORD = "西部极寒地区由巨龙所精炼的稀有材料."
+STRINGS.RECIPE_DESC.CRYSTALLITE = "西部极寒地区由巨龙所精炼的稀有材料."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CRYSTALLITE = "总觉得有种怪怪的气味~"
 
 local function fn(Sim)

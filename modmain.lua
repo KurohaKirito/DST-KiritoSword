@@ -14,7 +14,7 @@ PrefabFiles = {
 }
 
 -- 资源路径
-local assets = {
+Assets = {
     Asset("ANIM", "anim/elucidatorsword.zip"),
     Asset("ANIM", "anim/swap_elucidatorsword.zip"),
     Asset("IMAGE", "images/inventoryimages/elucidatorsword.tex"),
@@ -49,8 +49,8 @@ local assets = {
     Asset("ANIM", "anim/crystallite_build.zip"),
     Asset("ATLAS", "images/inventoryimages/crystallite.xml"),
 
-    Asset("IMAGE", "modicon.tex"),
-    Asset("ATLAS", "modicon.xml"),
+    Asset("IMAGE", "images/recipefiltericon.tex"),
+    Asset("ATLAS", "images/recipefiltericon.xml"),
 }
 
 -- 小地图图标
@@ -61,16 +61,16 @@ AddMinimapAtlas("images/map_icons/nightskysword.xml")
 AddMinimapAtlas("images/map_icons/bluerosesword.xml")
 
 -- 自定义过滤器
-GLOBAL.STRINGS.UI.CRAFTING_FILTERS["KIRITO_SWORD_FILTER"] = "Kirito Sword"
+GLOBAL.STRINGS.UI.CRAFTING_FILTERS["KIRITO_SWORD_FILTER"] = "刀剑神域"
 AddRecipeFilter(
     {
         name = "KIRITO_SWORD_FILTER",
-        atlas = "modicon.xml",
-        image = "modicon.tex"
+        atlas = "images/recipefiltericon.xml",
+        image = "recipefiltericon.tex",
     }
 )
 
--- 添加物品到过滤器
+-- 添加物品到自定义过滤器
 AddRecipeToFilter("blackplate", "KIRITO_SWORD_FILTER")
 AddRecipeToFilter("elucidatorsword", "KIRITO_SWORD_FILTER")
 AddRecipeToFilter("darkrepulsersword", "KIRITO_SWORD_FILTER")

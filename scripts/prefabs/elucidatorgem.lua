@@ -7,7 +7,7 @@ local Assets =
 }
 
 STRINGS.NAMES.ELUCIDATORGEM = "阐释宝石"
-STRINGS.RECIPE_DESC.ELUCIDATORSWORD = "制作阐释者的深邃宝石, 质地极其坚硬"
+STRINGS.RECIPE_DESC.ELUCIDATORGEM = "制作阐释者的深邃宝石, 质地极其坚硬"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.ELUCIDATORGEM = "它是多么的漆黑且深邃啊~"
 
 local function fn(Sim)
