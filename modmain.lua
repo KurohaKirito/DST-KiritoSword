@@ -1,23 +1,23 @@
 ---@diagnostic disable: undefined-global
 
+GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL, k) end })
+
 local Ingredient = GLOBAL.Ingredient
--- local RECIPETABS = GLOBAL.RECIPETABS
--- local Recipe = GLOBAL.Recipe
--- local TECH = GLOBAL.TECH
 
 PrefabFiles = {
-    "elucidatorsword",
-    "darkrepulsersword",
-    "blackplate",
-    "nightskysword",
-    "bluerosesword",
-    "elucidatorgem",
-    "gigascedar",
-    "crystallite",
+    "blackplate", -- 漆黑巨剑
+    "elucidatorsword", -- 阐释者
+    "darkrepulsersword", -- 逐暗者
+    "nightskysword", -- 夜空之剑
+    "bluerosesword", -- 蓝蔷薇之剑
+    "elucidatorgem", -- 黑宝石
+    "gigascedar", -- 恶魔之树的顶枝
+    "crystallite", -- 水晶石英铸块
 }
 
 -- 资源路径
-local assets = {
+-- local assets = {
+Assets = {
     Asset("ANIM", "anim/elucidatorsword.zip"),
     Asset("ANIM", "anim/swap_elucidatorsword.zip"),
     Asset("IMAGE", "images/inventoryimages/elucidatorsword.tex"),
@@ -59,6 +59,26 @@ AddMinimapAtlas("images/map_icons/darkrepulsersword.xml")
 AddMinimapAtlas("images/map_icons/blackplate.xml")
 AddMinimapAtlas("images/map_icons/nightskysword.xml")
 AddMinimapAtlas("images/map_icons/bluerosesword.xml")
+
+-- 自定义过滤器
+GLOBAL.STRINGS.UI.CRAFTING_FILTERS["KIRITO_SWORD_FILTER"] = "Kirito Sword"
+AddRecipeFilter(
+    {
+        name = "KIRITO_SWORD_FILTER",
+        atlas = "modicon.xml",
+        image = "modicon.tex"
+    }
+)
+
+-- 添加物品到过滤器
+AddRecipeToFilter("blackplate", "KIRITO_SWORD_FILTER")
+AddRecipeToFilter("elucidatorsword", "KIRITO_SWORD_FILTER")
+AddRecipeToFilter("darkrepulsersword", "KIRITO_SWORD_FILTER")
+AddRecipeToFilter("nightskysword", "KIRITO_SWORD_FILTER")
+AddRecipeToFilter("bluerosesword", "KIRITO_SWORD_FILTER")
+AddRecipeToFilter("elucidatorgem", "KIRITO_SWORD_FILTER")
+AddRecipeToFilter("gigascedar", "KIRITO_SWORD_FILTER")
+AddRecipeToFilter("crystallite", "KIRITO_SWORD_FILTER")
 
 -- 合成公式: 漆黑巨剑
 local blackplate = GLOBAL.Recipe(
@@ -122,28 +142,28 @@ local bluerosesword = GLOBAL.Recipe(
     GLOBAL.RECIPETABS.WAR, GLOBAL.TECH.SCIENCE_TWO)
 bluerosesword.atlas = "images/inventoryimages/bluerosesword.xml"
 
--- 克劳斯 BOSS 掉落: 阐释者, 逐暗者, 夜空之剑, 蓝蔷薇之剑
+-- 定义克劳斯 BOSS 新增掉落: 阐释者, 逐暗者, 夜空之剑, 蓝蔷薇之剑
 local function AddBossLootKlaus(prefab)
     if prefab.components.lootdropper then
-        prefab.components.lootdropper:AddChanceLoot('elucidatorsword',0.1)
-        prefab.components.lootdropper:AddChanceLoot('darkrepulsersword', 0.1)
-        prefab.components.lootdropper:AddChanceLoot('nightskysword', 0.1)
-        prefab.components.lootdropper:AddChanceLoot('bluerosesword', 0.1)
+        prefab.components.lootdropper:AddChanceLoot('elucidatorsword', 0.3)
+        prefab.components.lootdropper:AddChanceLoot('darkrepulsersword', 0.3)
+        prefab.components.lootdropper:AddChanceLoot('nightskysword', 0.4)
+        prefab.components.lootdropper:AddChanceLoot('bluerosesword', 0.4)
     end
 end
 
--- 克劳斯掉落
+-- 实装克劳斯掉落
 AddPrefabPostInit("klaus", AddBossLootKlaus)
 
--- 蚁狮 BOSS 掉落: 黑宝石, 水晶石英铸块
+-- 定义蚁狮 BOSS 新增掉落: 黑宝石, 水晶石英铸块
 local function AddBossLootAntlion(prefab)
     if prefab.components.lootdropper then
-        prefab.components.lootdropper:AddChanceLoot('elucidatorgem', 1)
-        prefab.components.lootdropper:AddChanceLoot('crystallite', 1)
+        prefab.components.lootdropper:AddChanceLoot('elucidatorgem', 2)
+        prefab.components.lootdropper:AddChanceLoot('crystallite', 2)
     end
 end
 
--- 增加蚁狮掉落
+-- 实装蚁狮掉落
 AddPrefabPostInit("antlion", AddBossLootAntlion)
 
 -- 增加 "可作为武器修复材料" 组件
