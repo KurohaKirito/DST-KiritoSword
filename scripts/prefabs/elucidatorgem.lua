@@ -6,8 +6,9 @@ local Assets =
     Asset("ATLAS", "images/inventoryimages/elucidatorgem.xml"),
 }
 
-STRINGS.NAMES.ELUCIDATORGEM = "黑宝石"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ELUCIDATORGEM = "质地极其坚硬的漆黑宝石"
+STRINGS.NAMES.ELUCIDATORGEM = "阐释宝石"
+STRINGS.RECIPE_DESC.ELUCIDATORSWORD = "制作阐释者的深邃宝石, 质地极其坚硬"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.ELUCIDATORGEM = "它是多么的漆黑且深邃啊~"
 
 local function fn(Sim)
     local inst = CreateEntity()

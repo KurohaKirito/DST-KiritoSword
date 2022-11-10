@@ -1,7 +1,5 @@
 ---@diagnostic disable: undefined-global
 
-GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL, k) end })
-
 local Ingredient = GLOBAL.Ingredient
 
 PrefabFiles = {
@@ -10,14 +8,13 @@ PrefabFiles = {
     "darkrepulsersword", -- 逐暗者
     "nightskysword", -- 夜空之剑
     "bluerosesword", -- 蓝蔷薇之剑
-    "elucidatorgem", -- 黑宝石
+    "elucidatorgem", -- 阐释宝石
     "gigascedar", -- 恶魔之树的顶枝
     "crystallite", -- 水晶石英铸块
 }
 
 -- 资源路径
--- local assets = {
-Assets = {
+local assets = {
     Asset("ANIM", "anim/elucidatorsword.zip"),
     Asset("ANIM", "anim/swap_elucidatorsword.zip"),
     Asset("IMAGE", "images/inventoryimages/elucidatorsword.tex"),
@@ -51,6 +48,9 @@ Assets = {
 
     Asset("ANIM", "anim/crystallite_build.zip"),
     Asset("ATLAS", "images/inventoryimages/crystallite.xml"),
+
+    Asset("IMAGE", "modicon.tex"),
+    Asset("ATLAS", "modicon.xml"),
 }
 
 -- 小地图图标
@@ -81,66 +81,118 @@ AddRecipeToFilter("gigascedar", "KIRITO_SWORD_FILTER")
 AddRecipeToFilter("crystallite", "KIRITO_SWORD_FILTER")
 
 -- 合成公式: 漆黑巨剑
-local blackplate = GLOBAL.Recipe(
+AddRecipe2(
     "blackplate",
     {
         Ingredient("charcoal", 5),
         Ingredient("log", 2),
         Ingredient("flint", 5),
     },
-    GLOBAL.RECIPETABS.WAR, GLOBAL.TECH.SCIENCE_TWO)
-blackplate.atlas = "images/inventoryimages/blackplate.xml"
+    GLOBAL.TECH.SCIENCE_TWO,
+    {
+        atlas = "images/inventoryimages/blackplate.xml"
+    },
+    {"WEAPONS", "MODS", "KIRITO_SWORD_FILTER"}
+)
 
 -- 合成公式: 阐释者
-local elucidatorsword = GLOBAL.Recipe(
+AddRecipe2(
     "elucidatorsword",
     {
         Ingredient("elucidatorgem", 2, "images/inventoryimages/elucidatorgem.xml"),
         Ingredient("nightmarefuel", 8),
     },
-    GLOBAL.RECIPETABS.WAR, GLOBAL.TECH.SCIENCE_TWO)
-elucidatorsword.atlas = "images/inventoryimages/elucidatorsword.xml"
+    GLOBAL.TECH.SCIENCE_TWO,
+    {
+        atlas = "images/inventoryimages/elucidatorsword.xml"
+    },
+    {"WEAPONS", "MODS", "KIRITO_SWORD_FILTER"}
+)
 
 -- 合成公式: 逐暗者
-local darkrepulsersword = GLOBAL.Recipe(
+AddRecipe2(
     "darkrepulsersword",
     {
         Ingredient("crystallite", 1, "images/inventoryimages/crystallite.xml"),
         Ingredient("hammer", 1),
         Ingredient("nightmarefuel", 8),
     },
-    GLOBAL.RECIPETABS.WAR, GLOBAL.TECH.SCIENCE_TWO)
-darkrepulsersword.atlas = "images/inventoryimages/darkrepulsersword.xml"
+    GLOBAL.TECH.SCIENCE_TWO,
+    {
+        atlas = "images/inventoryimages/darkrepulsersword.xml"
+    },
+    {"WEAPONS", "MODS", "KIRITO_SWORD_FILTER"}
+)
 
 -- 合成公式: 夜空之剑
-local nightskysword = GLOBAL.Recipe(
+AddRecipe2(
     "nightskysword",
     {
         Ingredient("gigascedar", 1, "images/inventoryimages/gigascedar.xml"),
         Ingredient("marble", 4),
         Ingredient("nightmarefuel", 8),
     },
-    GLOBAL.RECIPETABS.WAR, GLOBAL.TECH.SCIENCE_TWO)
-nightskysword.atlas = "images/inventoryimages/nightskysword.xml"
-
--- 合成公式: 恶魔之树的顶枝
-local gigascedar = GLOBAL.Recipe(
-    "gigascedar",
+    GLOBAL.TECH.SCIENCE_TWO,
     {
-        Ingredient("livinglog", 10),
+        atlas = "images/inventoryimages/nightskysword.xml"
     },
-    GLOBAL.RECIPETABS.REFINE, GLOBAL.TECH.SCIENCE_TWO)
-gigascedar.atlas = "images/inventoryimages/gigascedar.xml"
+    {"WEAPONS", "MODS", "KIRITO_SWORD_FILTER"}
+)
 
 -- 合成公式: 蓝蔷薇之剑
-local bluerosesword = GLOBAL.Recipe(
+AddRecipe2(
     "bluerosesword",
     {
         Ingredient("ice", 25),
         Ingredient("blueamulet", 1),
     },
-    GLOBAL.RECIPETABS.WAR, GLOBAL.TECH.SCIENCE_TWO)
-bluerosesword.atlas = "images/inventoryimages/bluerosesword.xml"
+    GLOBAL.TECH.SCIENCE_TWO,
+    {
+        atlas = "images/inventoryimages/bluerosesword.xml"
+    },
+    {"WEAPONS", "MODS", "KIRITO_SWORD_FILTER"}
+)
+
+-- 合成公式: 恶魔之树的顶枝
+AddRecipe2(
+    "gigascedar",
+    {
+        Ingredient("livinglog", 10),
+    },
+    GLOBAL.TECH.SCIENCE_TWO,
+    {
+        atlas = "images/inventoryimages/gigascedar.xml"
+    },
+    {"REFINE", "MODS", "KIRITO_SWORD_FILTER"}
+)
+
+-- 合成公式: 阐释宝石
+AddRecipe2(
+    "elucidatorgem",
+    {
+        Ingredient("redgem", 1),
+        Ingredient("greengem", 1),
+    },
+    GLOBAL.TECH.SCIENCE_TWO,
+    {
+        atlas = "images/inventoryimages/elucidatorgem.xml"
+    },
+    {"REFINE", "MODS", "KIRITO_SWORD_FILTER"}
+)
+
+-- 合成公式: 水晶石英铸块
+AddRecipe2(
+    "crystallite",
+    {
+        Ingredient("ice", 25),
+        Ingredient("bluegem", 1),
+    },
+    GLOBAL.TECH.SCIENCE_TWO,
+    {
+        atlas = "images/inventoryimages/crystallite.xml"
+    },
+    {"REFINE", "MODS", "KIRITO_SWORD_FILTER"}
+)
 
 -- 定义克劳斯 BOSS 新增掉落: 阐释者, 逐暗者, 夜空之剑, 蓝蔷薇之剑
 local function AddBossLootKlaus(prefab)
