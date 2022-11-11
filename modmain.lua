@@ -211,7 +211,7 @@ AddPrefabPostInit("klaus", AddBossLootKlaus)
 local function AddBossLootAntlion(prefab)
     if prefab.components.lootdropper then
         prefab.components.lootdropper:AddChanceLoot('elucidatorgem', 2)
-        prefab.components.lootdropper:AddChanceLoot('crystallite', 2)
+        prefab.components.lootdropper:AddChanceLoot('crystallite', 1)
     end
 end
 

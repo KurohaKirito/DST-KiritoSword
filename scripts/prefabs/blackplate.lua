@@ -26,7 +26,7 @@ local max_uses = 600
 local move_speed = 0.95
 
 -- 每次可修复的耐久
-local fixed_uses = max_uses * 0.2
+local fixed_uses = max_uses * 0.1
 -- 修补材料
 local fixed_material = "charcoal"
 
